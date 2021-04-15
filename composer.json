@@ -1,0 +1,32 @@
+{
+    "name": "ryan/easyswoole-code-generation",
+    "description": "A code generator for EasySwoole",
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "ryan",
+            "email": "43352901@qq.com"
+        }
+    ],
+    "require": {
+        "easyswoole/trigger": "^1.0",
+        "easyswoole/socket": "^1.0",
+        "easyswoole/orm": "^1.4",
+        "nette/php-generator": "^3.2",
+        "easyswoole/http-annotation": "^2.0",
+        "php-curl-class/php-curl-class": "^8.5",
+        "easyswoole/command": "^1.1"
+    },
+    "minimum-stability": "dev",
+    "require-dev": {
+        "easyswoole/easyswoole": "^3.3",
+        "easyswoole/swoole-ide-helper": "^1.2",
+        "easyswoole/phpunit": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "EasySwoole\\CodeGeneration\\": "src/",
+            "App\\": "App/"
+        }
+    }
+}
