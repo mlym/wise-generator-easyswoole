@@ -1,0 +1,8 @@
+/vendor
+/easyswoole
+/App
+/composer.lock
+/*.php
+/.idea
+/UnitTest/
+/bin

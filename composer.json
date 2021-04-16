@@ -18,15 +18,26 @@
         "easyswoole/command": "^1.1"
     },
     "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "Mlym\\CodeGeneration\\": "src/",
+            "App\\": "App/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "EasySwoole\\CodeGeneration\\Test\\": "Tests/",
+            "EasySwoole\\CodeGeneration\\UnitTest\\": "UnitTest/",
+            "App\\": "App/",
+            "UnitTest\\": "UnitTest/"
+        }
+    },
     "require-dev": {
         "easyswoole/easyswoole": "^3.3",
         "easyswoole/swoole-ide-helper": "^1.2",
         "easyswoole/phpunit": "^1.0"
     },
-    "autoload": {
-        "psr-4": {
-            "EasySwoole\\CodeGeneration\\": "src/",
-            "App\\": "App/"
-        }
-    }
+    "bin": [
+        "bin/code-generator"
+    ]
 }
