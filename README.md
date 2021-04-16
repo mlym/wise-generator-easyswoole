@@ -15,6 +15,22 @@
 composer require mlym/easyswoole-code-generation
 ```
 
+## 改善内容
+1. Contorller的@ApiGroupDescription可以正确读取表的COMMENT信息
+2. Controller和Model可以通过--description 增加功能说明
+3. Controller和Model可以继承同目录的Base类（先通过初始化`init --modulePath=\\模块目录` 生成Base类）
+4. Controller移除响应注解，由于文档自动生成与实际需求偏差较大，移除了所有Response参数说明
+5. Controller修复注解问题，有效区分@param的alias和description
+6. Controller修复注解问题，修复所有字段都是required=""，导致必须填写的问题
+7. Controller移除部分请求注解，如add时ID必填、create_time必填等情况
+8. Controller方法参数调整，为了统一前后端分页字段，将page改为pageNo
+9. Controller和Model的代码简化
+10. Model支持自动识别$autoTimeStamp、$createTime、$updateTime
+11. Model支持自动创建设置器
+12. 增加Options
+
+
+
 ## 使用
 
 ### 1. DI注入
