@@ -93,7 +93,8 @@ BODY
 
     function addWriteJson(){
         $phpClass = $this->phpClass;
-        $method = $phpClass->addMethod('onException');
+        $method = $phpClass->addMethod('writeJson');
+        $method->setProtected();
         $method->addParameter('statusCode')->setDefaultValue(200);
         $method->addParameter('result')->setDefaultValue(null);
         $method->addParameter('msg')->setDefaultValue(null);
