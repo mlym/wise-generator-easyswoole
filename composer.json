@@ -38,6 +38,6 @@
         "easyswoole/phpunit": "^1.0"
     },
     "bin": [
-        "bin/code-generator"
+        "bin/mlym-easyswoole-code-generator"
     ]
 }
