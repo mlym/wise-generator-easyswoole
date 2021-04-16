@@ -29,6 +29,7 @@ class ControllerGeneration extends ClassGeneration
         $this->addIndexMethod();
 //        $this->addGetClientIpMethod();
         $this->addOnExceptionMethod();
+        $this->addWriteJson();
     }
 
     protected function addIndexMethod()
@@ -88,5 +89,29 @@ if (\$throwable instanceof ParamValidateError) {
 BODY
         );
 
+    }
+
+    function addWriteJson(){
+        $phpClass = $this->phpClass;
+        $method = $phpClass->addMethod('onException');
+        $method->addParameter('statusCode')->setDefaultValue(200);
+        $method->addParameter('result')->setDefaultValue(null);
+        $method->addParameter('msg')->setDefaultValue(null);
+        $method->setReturnType('bool');
+        $method->setBody(<<<BODY
+if (!\$this->response()->isEndResponse()) {
+    \$data = array(
+        "code" => \$statusCode,
+        "msg" => \$msg
+    );
+    empty(\$result) || \$data['data'] = \$result;
+    \$this->response()->write(json_encode(\$data, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES));
+    \$this->response()->withHeader('Content-type', 'application/json;charset=utf-8');
+    \$this->response()->withStatus(200);
+    return true;
+} else {
+    return false;
+}
+BODY);
     }
 }
