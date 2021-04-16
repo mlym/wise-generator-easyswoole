@@ -81,9 +81,10 @@ class GenerationCommand implements CommandInterface
     protected function init()
     {
         $modulePath = CommandManager::getInstance()->getOpt('modulePath') ?? '';
-        if ($modulePath){
-            Str::startsWith($modulePath, "\\") || $modulePath = $modulePath . "\\";
+        if ($modulePath) {
+            Str::startsWith($modulePath, "\\") || $modulePath = "\\" . $modulePath;
         }
+        var_dump($modulePath);
         $table = [];
         $table[0] = ['className' => 'Model', 'filePath' => $this->generationBaseModel($modulePath)];
         $table[1] = ['className' => 'Controller', 'filePath' => $this->generationBaseController($modulePath)];
@@ -196,7 +197,7 @@ class GenerationCommand implements CommandInterface
      */
     protected function generationBaseController($modulePath)
     {
-        $config = new ControllerConfig('Base',"App\\HttpController{$modulePath}");
+        $config = new ControllerConfig('Base', "App\\HttpController{$modulePath}");
         $config->setExtendClass(AnnotationController::class);
         $generation = new ControllerGeneration($config);
         return $generation->generate();
@@ -222,7 +223,7 @@ class GenerationCommand implements CommandInterface
      */
     protected function generationBaseModel($modulePath)
     {
-        $config = new ModelConfig("BaseModel","App\\Model{$modulePath}");
+        $config = new ModelConfig("BaseModel", "App\\Model{$modulePath}");
         $config->setExtendClass(AbstractModel::class);
         $generation = new ModelGeneration($config);
         return $generation->generate();
