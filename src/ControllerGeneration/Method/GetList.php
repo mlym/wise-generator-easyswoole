@@ -18,7 +18,7 @@ class GetList extends MethodAbstract
 
         //新增page参数注解
         $method->addComment("@Param(name=\"pageNo\", from={GET,POST}, alias=\"页数\", optional=\"\", defaultValue=\"1\")");
-        $method->addComment("@Param(name=\"pageSize\", from={GET,POST}, alias=\"每页总数\", optional=\"\", defaultValue=\"10\")");
+        $method->addComment("@Param(name=\"pageSize\", from={GET,POST}, alias=\"每页总数\", optional=\"\", defaultValue=\"20\")");
 
         $responseParamComment = [];
         $this->chunkTableColumn(function (Column $column, string $columnName) use (&$responseParamComment) {

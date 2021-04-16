@@ -117,7 +117,7 @@ class GenerationCommand implements CommandInterface
          * 构建代码生成类，生成表对象
          */
         $codeGeneration = new CodeGeneration($tableName, $connection);
-        $codeGeneration->setModuleName(CommandManager::getInstance()->getOpt('moduleName') ?? '');
+        $codeGeneration->setDescription(CommandManager::getInstance()->getOpt('description') ?? '');
 
         /**
          * 通过DI获取控制器、模型、单元测试、根路径等信息进行配置（在bootstrap注入）

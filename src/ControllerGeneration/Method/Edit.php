@@ -25,6 +25,7 @@ if (empty(\$info)) {
     return false;
 }
 \$updateData = [];
+
 Body;
         $this->chunkTableColumn(function (Column $column, string $columnName) use ($table, &$methodBody) {
             $paramValue = $this->newColumnParam($column);

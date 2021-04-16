@@ -23,12 +23,14 @@ class Delete extends MethodAbstract
                 return false;
             }
             $paramValue->required = '';
+            $paramValue->name = 'ids';
             $this->addColumnComment($paramValue);
             return true;
         });
+
         $methodBody = <<<Body
 \$param = ContextManager::getInstance()->get('param');
-\$model = new MwTestTwoModel();
+\$model = new {$modelName}();
 \$ids = explode(',',\$param['ids']?? '');
 empty(\$ids) || \$model->destroy(\$ids);
 \$this->writeJson(Status::CODE_OK, [], "删除成功.");
@@ -40,5 +42,6 @@ Body;
 
     function addComment()
     {
+        $this->method->addComment("@throws \Throwable");
     }
 }

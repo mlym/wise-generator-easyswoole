@@ -26,6 +26,7 @@ class CodeGeneration
     protected $unitTestBaseNameSpace = "UnitTest";
     protected $rootPath;
     protected $moduleName;
+    protected $description;
 
     /**
      * CodeGeneration constructor.
@@ -56,7 +57,7 @@ class CodeGeneration
     {
         $modelConfig = new ModelConfig($this->schemaInfo, $tablePre, "{$this->modelBaseNameSpace}{$path}", $extendClass);
         $modelConfig->setRootPath($this->getRootPath());
-        $modelConfig->setModuleName($this->getModuleName());
+        $modelConfig->setDescription($this->getDescription());
         $modelGeneration = new ModelGeneration($modelConfig);
         $this->modelGeneration = $modelGeneration;
         return $modelGeneration;
@@ -66,7 +67,7 @@ class CodeGeneration
     {
         $controllerConfig = new ControllerConfig($modelGeneration->getConfig()->getNamespace() . '\\' . $modelGeneration->getClassName(), $this->schemaInfo, $tablePre, "{$this->controllerBaseNameSpace}{$path}", $extendClass);
         $controllerConfig->setRootPath($this->getRootPath());
-        $controllerConfig->setModuleName($this->getModuleName());
+        $controllerConfig->setDescription($this->getDescription());
         $controllerGeneration = new ControllerGeneration($controllerConfig);
         $this->controllerGeneration = $controllerGeneration;
         return $controllerGeneration;
@@ -76,7 +77,7 @@ class CodeGeneration
     {
         $controllerConfig = new UnitTestConfig($modelGeneration->getConfig()->getNamespace() . '\\' . $modelGeneration->getClassName(), $controllerGeneration->getConfig()->getNamespace() . '\\' . $controllerGeneration->getClassName(), $this->schemaInfo, $tablePre, "{$this->unitTestBaseNameSpace}{$path}", $extendClass);
         $controllerConfig->setRootPath($this->getRootPath());
-        $controllerConfig->setModuleName($this->getModuleName());
+        $controllerConfig->setDescription($this->getDescription());
         $unitTestGeneration = new UnitTestGeneration($controllerConfig);
         return $unitTestGeneration;
     }
@@ -187,6 +188,23 @@ class CodeGeneration
     {
         $this->moduleName = $moduleName;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param mixed $description
+     */
+    public function setDescription($description): void
+    {
+        $this->description = $description;
+    }
+
 
 
 

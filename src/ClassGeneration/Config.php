@@ -11,6 +11,7 @@ class Config
     protected $className;
     protected $rootPath;//项目根目录
     protected $moduleName;//模块名称
+    protected $description;//业务功能描述
 
     public function __construct($className, $nameSpace = "\\App")
     {
@@ -126,5 +127,22 @@ class Config
     {
         $this->moduleName = $moduleName;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param mixed $description
+     */
+    public function setDescription($description): void
+    {
+        $this->description = $description;
+    }
+
 
 }

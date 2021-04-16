@@ -66,8 +66,12 @@ class ClassGeneration
      */
     protected function addComment()
     {
-        $this->phpClass->addComment("{$this->getClassName()}");
-        $this->phpClass->addComment("Class {$this->getClassName()}");
+        if ($this->getConfig()->getDescription()){
+            $this->phpClass->addComment($this->getConfig()->getDescription());
+        }else{
+            $this->phpClass->addComment("{$this->getClassName()}");
+            $this->phpClass->addComment("Class {$this->getClassName()}");
+        }
     }
 
     protected function getClassName()

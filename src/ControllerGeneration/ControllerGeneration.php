@@ -1,4 +1,5 @@
 <?php
+
 namespace Mlym\CodeGeneration\ControllerGeneration;
 
 
@@ -50,11 +51,12 @@ class ControllerGeneration extends ClassGeneration
         return $this->config->getRealTableName() . $this->config->getFileSuffix();
     }
 
-    protected function getApiGroup(){
-        $className=  $this->getClassName();
+    protected function getApiGroup()
+    {
+        $className = $this->getClassName();
         $namespace = $this->getConfig()->getNamespace();
-        $namespace = str_replace('App\HttpController\\','',$namespace);
-        $namespace = str_replace('\\','.',$namespace);
+        $namespace = str_replace('App\HttpController\\', '', $namespace);
+        $namespace = str_replace('\\', '.', $namespace);
         return "{$namespace}.$className";
     }
 
@@ -88,11 +90,7 @@ class ControllerGeneration extends ClassGeneration
 
     function addComment()
     {
-        if ($this->getConfig()->getModuleName()){
-            $this->phpClass->addComment($this->getConfig()->getModuleName());
-        }else{
-            parent::addComment();
-        }
+        parent::addComment();
         $this->phpClass->addComment("@ApiGroup(groupName=\"{$this->getApiUrl()}/{$this->config->getRealTableName()}\")");
         $this->phpClass->addComment("@ApiGroupAuth(name=\"{$this->config->getAuthSessionName()}\")");
         $this->phpClass->addComment("@ApiGroupDescription(\"{$this->config->getTable()->getComment()}\")");
