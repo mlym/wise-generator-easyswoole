@@ -5,3 +5,6 @@
 /*.php
 /.idea
 /UnitTest/
+/json_file
+/Log
+/Temp

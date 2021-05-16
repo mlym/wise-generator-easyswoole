@@ -1,6 +1,9 @@
 # easyswoole-code-generation
 基于EasySwoole的code-generation改写，主要应用与内部系统。基本上所有类都有所调整，同时也完善了一些功能。
 
+## 版本说明
+[版本说明](https://github.com/mlym/easyswoole-code-generation/wiki/%E7%89%88%E6%9C%AC%E8%BF%AD%E4%BB%A3)
+
 # code-generation
 使用命令行,一键生成业务通用代码,支持代码如下:
 - 一键生成项目初始化 baseController,baseModel,baseUnitTest.支持自定义ModulePath
@@ -119,3 +122,14 @@ $ php vendor/bin/mlym-easyswoole-code-generator all --tableName=mw_user --contro
 │ Controller │ /Users/ryan/Desktop/src/composer/easyswoole-code-generation/App/HttpController/admin/MwUser.php │
 └────────────┴────────────────────────────────────────────────────────────────────────────────────────────────────┘```
 
+### 4.生成Json中间件
+```bash
+php vendor/bin/mlym-easyswoole-code-generator json --tableName=mw_test
+┌─────────────┬────────────────────────────────────────────────────────────────────────────────────────┐
+│    Table    │                                     MiddleFilePath                                     │
+├─────────────┼────────────────────────────────────────────────────────────────────────────────────────┤
+│ mw_test_one │ /Users/ryan/Desktop/src/composer/easyswoole-code-generation/json_file/mw_test_one.json │
+└─────────────┴────────────────────────────────────────────────────────────────────────────────────────┘
+```
+参数：
+- --tableName 必须指定

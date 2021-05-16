@@ -22,6 +22,7 @@ use Mlym\CodeGeneration\InitBaseClass\Model\ModelConfig;
 use Mlym\CodeGeneration\InitBaseClass\Model\ModelGeneration;
 use Mlym\CodeGeneration\InitBaseClass\UnitTest\UnitTestConfig;
 use Mlym\CodeGeneration\InitBaseClass\UnitTest\UnitTestGeneration;
+use Mlym\CodeGeneration\JsonGeneration\JsonGeneration;
 use PHPUnit\Framework\TestCase;
 use Swoole\Coroutine\Scheduler;
 
@@ -47,6 +48,9 @@ class GenerationCommand implements CommandInterface
         $commandHelp->addActionOpt('--modelPath', 'specify model path');
         $commandHelp->addActionOpt('--controllerPath', 'specify controller path');
         $commandHelp->addActionOpt('--unitTestPath', 'specify unit-test path');
+
+        //增加Json生成
+        $commandHelp->addAction('json', 'Generate JSON depending on the schema');
         return $commandHelp;
     }
 
@@ -62,6 +66,9 @@ class GenerationCommand implements CommandInterface
                     break;
                 case 'all':
                     $result = $this->all();
+                    break;
+                case 'json':
+                    $result = $this->json();
                     break;
                 default:
                     $result = CommandManager::getInstance()->displayCommandHelp($this->commandName());
@@ -84,7 +91,6 @@ class GenerationCommand implements CommandInterface
         if ($modulePath) {
             Str::startsWith($modulePath, "\\") || $modulePath = "\\" . $modulePath;
         }
-        var_dump($modulePath);
         $table = [];
         $table[0] = ['className' => 'Model', 'filePath' => $this->generationBaseModel($modulePath)];
         $table[1] = ['className' => 'Controller', 'filePath' => $this->generationBaseController($modulePath)];
@@ -146,10 +152,37 @@ class GenerationCommand implements CommandInterface
     }
 
     /**
+     * @return string
+     * @throws \Throwable
+     */
+    protected function json(){
+        /**
+         * 获取参数
+         */
+        $tableName = CommandManager::getInstance()->getOpt('tableName');
+        if (empty($tableName)) {
+            return Color::error('table not empty');
+        }
+
+        /**
+         * 数据库连接
+         */
+        $connection = $this->getConnection();
+        $jsonGeneration = new JsonGeneration($tableName,$connection,[]);
+        $jsonGeneration->build();
+        $output =[
+            [
+                "Table"=>$tableName,
+                "MiddleFilePath" => $jsonGeneration->toFile()]
+        ];
+        return new ArrayToTextTable($output);
+    }
+
+    /**
      * @return Connection
      * @throws \Throwable
      */
-    protected function getConnection(): Connection
+    protected function getConnection(): ?Connection
     {
         $connection = Di::getInstance()->get('CodeGeneration.connection');
         if ($connection instanceof Connection) {

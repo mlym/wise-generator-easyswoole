@@ -4,6 +4,7 @@ namespace Mlym\CodeGeneration\Unity;
 
 use EasySwoole\ORM\Db\ClientInterface;
 use EasySwoole\ORM\Db\ConnectionInterface;
+use EasySwoole\ORM\Exception\Exception;
 use EasySwoole\ORM\Utility\TableObjectGeneration;
 use EasySwoole\ORM\Utility\Schema\Table;
 
@@ -15,8 +16,8 @@ class TableObjectGenerationSub extends TableObjectGeneration
     }
 
     /**
-     * @return \EasySwoole\ORM\Utility\Schema\Table|Table
-     * @throws \EasySwoole\ORM\Exception\Exception
+     * @return Table
+     * @throws Exception
      */
     public function generationTable()
     {
