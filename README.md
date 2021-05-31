@@ -1,8 +1,8 @@
-# easyswoole-code-generation
+# wise-generator-easyswoole
 基于EasySwoole的code-generation改写，主要应用与内部系统。基本上所有类都有所调整，同时也完善了一些功能。
 
 ## 版本说明
-[版本说明](https://github.com/mlym/easyswoole-code-generation/wiki/%E7%89%88%E6%9C%AC%E8%BF%AD%E4%BB%A3)
+[版本说明](https://github.com/mlym/wise-generator-easyswoole/wiki/%E7%89%88%E6%9C%AC%E8%BF%AD%E4%BB%A3)
 
 # code-generation
 使用命令行,一键生成业务通用代码,支持代码如下:
