@@ -1,5 +1,5 @@
 {
-  "name": "mlym/easyswoole-code-generation",
+  "name": "mlym/wise-generator-easyswoole",
   "description": "A code generator for EasySwoole",
   "license": "Apache-2.0",
   "authors": [
@@ -39,6 +39,6 @@
     "easyswoole/phpunit": "^1.0"
   },
   "bin": [
-    "bin/mlym-easyswoole-code-generator"
+    "bin/wise-generator-easyswoole"
   ]
 }
