@@ -57,13 +57,13 @@ $mysqlConfig = new \EasySwoole\ORM\Db\Config(\EasySwoole\EasySwoole\Config::getI
 执行命令:
 
 ```bash
-php vendor/bin/mlym-easyswoole-code-generator
+php vendor/bin/wise-generator-easyswoole
 ```
 
 ### 2.初始化基础类:
 
 ```bash
-php vendor/bin/mlym-easyswoole-code-generator init
+php vendor/bin/wise-generator-easyswoole init
 
 无参数示例：
 ┌────────────┬─────────────────────────────────────────────────────────────────────────────────────────┐
@@ -80,7 +80,7 @@ php vendor/bin/mlym-easyswoole-code-generator init
 参数：
 - --modulePath 模块路径
 ```bash
-php vendor/bin/mlym-easyswoole-code-generator init --modulePath=\\admin
+php vendor/bin/wise-generator-easyswoole init --modulePath=\\admin
 
 参数示例：
 ┌────────────┬───────────────────────────────────────────────────────────────────────────────────────────────┐
@@ -99,7 +99,7 @@ php vendor/bin/mlym-easyswoole-code-generator init --modulePath=\\admin
 ### 3.自定义业务模块代码:
 
 ```bash
-php vendor/bin/mlym-easyswoole-code-generator all
+php vendor/bin/wise-generator-easyswoole all
 ```
 
 参数：
@@ -113,7 +113,7 @@ php vendor/bin/mlym-easyswoole-code-generator all
 示例：
 
 ```bash
-$ php vendor/bin/mlym-easyswoole-code-generator all --tableName=mw_user --controllerPath=\\admin --modelPath=\\admin --extendBase --description=用户模块
+$ php vendor/bin/wise-generator-easyswoole all --tableName=mw_user --controllerPath=\\admin --modelPath=\\admin --extendBase --description=用户模块
 ┌────────────┬────────────────────────────────────────────────────────────────────────────────────────────────────┐
 │ className  │                                              filePath                                              │
 ├────────────┼────────────────────────────────────────────────────────────────────────────────────────────────────┤
@@ -124,7 +124,7 @@ $ php vendor/bin/mlym-easyswoole-code-generator all --tableName=mw_user --contro
 
 ### 4.生成Json中间件
 ```bash
-php vendor/bin/mlym-easyswoole-code-generator json --tableName=mw_test
+php vendor/bin/wise-generator-easyswoole json --tableName=mw_test
 ┌─────────────┬────────────────────────────────────────────────────────────────────────────────────────┐
 │    Table    │                                     MiddleFilePath                                     │
 ├─────────────┼────────────────────────────────────────────────────────────────────────────────────────┤
